@@ -13,7 +13,7 @@ default_args = {
 }
 
 def extract():
-    path = "https://raw.githubusercontent.com/Lina-Arroyo/PruebaTecnica/main/Data/Traffic_Flow_Map_Volumes.csv"
+    path = "https://raw.githubusercontent.com/Lina-Arroyo/ETL-Airflow/main/Data/Traffic_Flow_Map_Volumes.csv"
     data = pd.read_csv(path)
     json_data = data.to_json()
     return json_data
