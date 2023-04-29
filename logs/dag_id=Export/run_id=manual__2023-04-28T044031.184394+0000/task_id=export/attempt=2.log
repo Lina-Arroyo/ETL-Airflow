@@ -1,0 +1,46 @@
+[2023-04-28T04:45:46.371+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: Export.export manual__2023-04-28T04:40:31.184394+00:00 [queued]>
+[2023-04-28T04:45:46.398+0000] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: Export.export manual__2023-04-28T04:40:31.184394+00:00 [queued]>
+[2023-04-28T04:45:46.399+0000] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-28T04:45:46.400+0000] {taskinstance.py:1284} INFO - Starting attempt 2 of 2
+[2023-04-28T04:45:46.422+0000] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2023-04-28T04:45:46.516+0000] {taskinstance.py:1304} INFO - Executing <Task(PythonOperator): export> on 2023-04-28 04:40:31.184394+00:00
+[2023-04-28T04:45:46.525+0000] {standard_task_runner.py:55} INFO - Started process 60 to run task
+[2023-04-28T04:45:46.531+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'Export', 'export', 'manual__2023-04-28T04:40:31.184394+00:00', '--job-id', '114', '--raw', '--subdir', 'DAGS_FOLDER/Dag.py', '--cfg-path', '/tmp/tmpfu4bjsfi']
+[2023-04-28T04:45:46.535+0000] {standard_task_runner.py:83} INFO - Job 114: Subtask export
+[2023-04-28T04:45:46.832+0000] {task_command.py:389} INFO - Running <TaskInstance: Export.export manual__2023-04-28T04:40:31.184394+00:00 [running]> on host e98db22c514b
+[2023-04-28T04:45:47.165+0000] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=Lina Arroyo
+AIRFLOW_CTX_DAG_ID=Export
+AIRFLOW_CTX_TASK_ID=export
+AIRFLOW_CTX_EXECUTION_DATE=2023-04-28T04:40:31.184394+00:00
+AIRFLOW_CTX_TRY_NUMBER=2
+AIRFLOW_CTX_DAG_RUN_ID=manual__2023-04-28T04:40:31.184394+00:00
+[2023-04-28T04:45:48.171+0000] {taskinstance.py:1772} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 175, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 192, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/dags/Dag.py", line 65, in export
+    repo = git.Repo.clone_from('https://github.com/Lina-Arroyo/PruebaTecnica.git', 'repoPT')
+  File "/home/airflow/.local/lib/python3.10/site-packages/git/repo/base.py", line 1308, in clone_from
+    return cls._clone(
+  File "/home/airflow/.local/lib/python3.10/site-packages/git/repo/base.py", line 1194, in _clone
+    proc = git.clone(
+  File "/home/airflow/.local/lib/python3.10/site-packages/git/cmd.py", line 741, in <lambda>
+    return lambda *args, **kwargs: self._call_process(name, *args, **kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/git/cmd.py", line 1315, in _call_process
+    return self.execute(call, **exec_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/git/cmd.py", line 985, in execute
+    proc = Popen(
+  File "/usr/local/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.10/subprocess.py", line 1847, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+PermissionError: [Errno 13] Permission denied: 'git'
+[2023-04-28T04:45:48.328+0000] {taskinstance.py:1322} INFO - Marking task as FAILED. dag_id=Export, task_id=export, execution_date=20230428T044031, start_date=20230428T044546, end_date=20230428T044548
+[2023-04-28T04:45:48.602+0000] {standard_task_runner.py:100} ERROR - Failed to execute job 114 for task export ([Errno 13] Permission denied: 'git'; 60)
+[2023-04-28T04:45:48.665+0000] {local_task_job.py:159} INFO - Task exited with return code 1
+[2023-04-28T04:45:48.734+0000] {taskinstance.py:2582} INFO - 0 downstream tasks scheduled from follow-on schedule check
